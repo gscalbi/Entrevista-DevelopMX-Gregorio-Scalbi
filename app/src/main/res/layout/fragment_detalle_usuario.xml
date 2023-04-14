@@ -1,14 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".framework.FragmentDetalleUsuario">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".framework.fragments.FragmentDetalleUsuario">
+
+    <View
+        android:id="@+id/viewTop"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="250dp"
+        android:background="@color/amarillo"
+        />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civFoto"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toBottomOf="@+id/viewTop"
+        app:layout_constraintBottom_toBottomOf="@id/viewTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        app:civ_border_width="3dp"
+        app:civ_border_color="@color/black"
 
-</FrameLayout>
+        />
+    <ImageView
+        android:id="@+id/ivTelefono"
+        app:layout_constraintTop_toTopOf="@id/tvTelefono"
+        app:layout_constraintBottom_toBottomOf="@id/tvTelefono"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_phone"
+        android:layout_marginStart="@dimen/common_padding_default"/>
+    <TextView
+        android:background="@drawable/card_rounded_8dp"
+        android:id="@+id/tvTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/tvDireccion"
+        app:layout_constraintStart_toEndOf="@id/ivTelefono"
+        tools:text="3364532973"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:paddingHorizontal="@dimen/common_padding_default"
+        android:paddingVertical="@dimen/common_padding_min"
+        android:layout_margin="@dimen/common_padding_middle"
+        android:fontFamily="@font/mori_semi_bold"
+        android:textAlignment="center"
+        />
+    <ImageView
+        android:id="@+id/ivDireccion"
+        app:layout_constraintTop_toTopOf="@id/tvDireccion"
+        app:layout_constraintStart_toStartOf="@id/ivTelefono"
+        app:layout_constraintBottom_toBottomOf="@id/tvDireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_house"/>
+    <TextView
+        android:id="@+id/tvDireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.7"
+        app:layout_constraintStart_toEndOf="@+id/ivDireccion"
+        tools:text="Mitre 922, conesa"
+        android:textSize="20sp"
+        android:background="@drawable/card_rounded_8dp"
+        android:textAlignment="center"
+        android:padding="@dimen/common_padding_middle"
+        android:layout_marginTop="@dimen/common_padding_default"
+        android:layout_marginHorizontal="@dimen/common_padding_default"
+        android:fontFamily="@font/mori_regular"
+        />
+        </androidx.constraintlayout.widget.ConstraintLayout>

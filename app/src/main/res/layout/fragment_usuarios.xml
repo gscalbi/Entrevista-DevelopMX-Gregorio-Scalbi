@@ -1,14 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".framework.FragmentUsuarios">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".framework.fragments.FragmentUsuarios">
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/common_padding_middle"
+        android:layout_marginHorizontal="@dimen/common_padding_default"
+        android:orientation="horizontal"
+        >
+    <com.google.android.material.button.MaterialButton
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/btnGeneroMasculino"
+        android:layout_width="0dp"
+        android:layout_weight="0.3"
+        app:cornerRadius="@dimen/common_padding_default"
+        android:padding="@dimen/common_padding_middle"
+        android:layout_margin="@dimen/common_padding_min"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/mori_semi_bold"
+        android:text="Male"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_margin="@dimen/common_padding_min"
+        android:id="@+id/btnGeneroFemenino"
+        android:layout_width="0dp"
+        android:layout_weight="0.3"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="Female"
+        android:fontFamily="@font/mori_semi_bold"
+        app:cornerRadius="@dimen/common_padding_default"
+        android:padding="@dimen/common_padding_middle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnReset"
+        app:layout_constraintStart_toEndOf="@id/btnGeneroMasculino"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnReset"
+        android:layout_margin="@dimen/common_padding_min"
+        android:layout_width="0dp"
+        android:layout_weight="0.3"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="reset"
+        android:fontFamily="@font/mori_semi_bold"
+        android:padding="@dimen/common_padding_middle"
+        app:cornerRadius="@dimen/common_padding_default"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvUsers"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_usuario"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         />
 
-</FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

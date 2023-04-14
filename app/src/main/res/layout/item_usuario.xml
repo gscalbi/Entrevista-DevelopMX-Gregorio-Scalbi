@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cardUsuario"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="@dimen/common_padding_default"
+    android:layout_marginTop="@dimen/common_padding_default"
+    android:paddingBottom="@dimen/common_padding_middle"
+    android:background="@drawable/card_usuario"
+    >
 
-</androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Gregorio Scalbi"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mori_semi_bold"
+            android:textSize="25sp"
+            android:layout_marginVertical="@dimen/common_padding_min"
+            android:layout_marginHorizontal="@dimen/common_padding_default"
+            />
+    <View
+        android:id="@+id/viewSeparador"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        app:layout_constraintTop_toBottomOf="@id/tvNombre"
+        android:background="@color/black"/>
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/viewSeparador"
+            app:layout_constraintStart_toStartOf="@id/tvNombre"
+            tools:text="gregorioscalbi@gmail.com"
+            android:layout_marginTop="12dp"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/tvGenero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvEmail"
+            app:layout_constraintStart_toStartOf="@id/tvEmail"
+
+            tools:text="male"
+            android:fontFamily="@font/mori_semi_bold"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="12dp"
+
+            />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+

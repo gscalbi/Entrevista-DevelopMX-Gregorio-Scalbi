@@ -7,16 +7,32 @@
 
     <fragment
         android:id="@+id/fragmentUsuarios"
-        android:name="com.fatal.entrevistadevelopmx.framework.FragmentUsuarios"
+        android:name="com.fatal.entrevistadevelopmx.framework.fragments.FragmentUsuarios"
         android:label="Usuarios"
         tools:layout="@layout/fragment_usuarios">
         <action
             android:id="@+id/action_fragmentUsuarios_to_fragmentTwo"
-            app:destination="@id/fragmentTwo" />
+            app:destination="@id/fragmentDetalleUsuario"
+
+            />
+
     </fragment>
     <fragment
-        android:id="@+id/fragmentTwo"
-        android:name="com.fatal.entrevistadevelopmx.framework.FragmentDetalleUsuario"
+        android:id="@+id/fragmentDetalleUsuario"
+        android:name="com.fatal.entrevistadevelopmx.framework.fragments.FragmentDetalleUsuario"
         android:label="Detalle"
-        tools:layout="@layout/fragment_detalle_usuario" />
+        tools:layout="@layout/fragment_detalle_usuario" >
+        <argument
+            android:name="telefono"
+            app:argType="string" />
+        <argument
+            android:name="gender"
+            app:argType="string" />
+        <argument
+            android:name="direccion"
+            app:argType="com.fatal.entrevistadevelopmx.data.Location" />
+        <argument
+            android:name="foto"
+            app:argType="com.fatal.entrevistadevelopmx.data.Picture" />
+    </fragment>
 </navigation>
