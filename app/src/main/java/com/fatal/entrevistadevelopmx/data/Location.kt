@@ -1,5 +1,7 @@
 package com.fatal.entrevistadevelopmx.data
 
+import java.io.Serializable
+
 data class Location(
     val city: String,
     val coordinates: Coordinates,
@@ -8,4 +10,4 @@ data class Location(
     val state: String,
     val street: Street,
     val timezone: Timezone
-)
+):Serializable

@@ -4,8 +4,9 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.fatal.entrevistadevelopmx.data.Result
 import com.fatal.entrevistadevelopmx.databinding.ItemUsuarioBinding
+import com.fatal.entrevistadevelopmx.usecases.Navigator
 
-class ViewHolderUsuarios (view: View) : RecyclerView.ViewHolder(view) {
+class ViewHolderUsuarios (var view: View) : RecyclerView.ViewHolder(view) {
     private val binding = ItemUsuarioBinding.bind(view)
 
     fun bind(result: Result){
@@ -13,7 +14,7 @@ class ViewHolderUsuarios (view: View) : RecyclerView.ViewHolder(view) {
         binding.tvGenero.text = result.gender
         binding.tvNombre.text = "${result.name.title} ${result.name.first} ${result.name.last}"
         binding.cardUsuario.setOnClickListener {
-
+            Navigator(view).onItemSelected(result.picture,result.location,result.phone)
         }
     }
 }

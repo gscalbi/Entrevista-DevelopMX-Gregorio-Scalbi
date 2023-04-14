@@ -19,5 +19,15 @@
         android:id="@+id/fragmentTwo"
         android:name="com.fatal.entrevistadevelopmx.framework.fragments.FragmentDetalleUsuario"
         android:label="Detalle"
-        tools:layout="@layout/fragment_detalle_usuario" />
+        tools:layout="@layout/fragment_detalle_usuario" >
+        <argument
+            android:name="telefono"
+            app:argType="string" />
+        <argument
+            android:name="direccion"
+            app:argType="com.fatal.entrevistadevelopmx.data.Location" />
+        <argument
+            android:name="foto"
+            app:argType="com.fatal.entrevistadevelopmx.data.Picture" />
+    </fragment>
 </navigation>
