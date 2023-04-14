@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.size
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fatal.entrevistadevelopmx.data.APIService
@@ -25,7 +27,7 @@ class FragmentUsuarios : Fragment() {
     private lateinit var binding: FragmentUsuariosBinding
     private val viewModel by viewModels<ViewModelUsuarios>()
     private val usuarios = mutableListOf<Result>()
-    private lateinit var adapter : AdapterUsuario
+    private lateinit var adapter: AdapterUsuario
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,57 +39,40 @@ class FragmentUsuarios : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        //inicializa el RecycleView
         recyclerLoad()
+        //configura viewModel
+        ViewModelSet()
+        //setea los listeners de los botones
+        setBotones()
+    }
 
-
-
-
+    private fun setBotones() {
         binding.btnGeneroFemenino.setOnClickListener {
-            searchByName("&gender=female" )
-
+            viewModel.searchByName("&gender=female")
         }
         binding.btnGeneroMasculino.setOnClickListener {
-            searchByName("&gender=male" )
-
+            viewModel.searchByName("&gender=male")
         }
         binding.btnReset.setOnClickListener {
-            searchByName("")
-
+            viewModel.searchByName("")
         }
     }
 
-    private fun recyclerLoad(){
+    private fun ViewModelSet() {
+        viewModel.usuarios.observe(viewLifecycleOwner) {
+            adapter = AdapterUsuario(it)
+            binding.rvUsers.adapter = adapter
+            adapter.notifyDataSetChanged()
+            binding.rvUsers.smoothScrollToPosition(0)
+        }
+    }
+
+    private fun recyclerLoad() {
         adapter = AdapterUsuario(usuarios)
-        binding.rvUsers.layoutManager =LinearLayoutManager(binding.root.context)
+        binding.rvUsers.layoutManager = LinearLayoutManager(binding.root.context)
         binding.rvUsers.adapter = AdapterUsuario(usuarios)
-
     }
 
-    private fun getRetrofit(): Retrofit {
-        var retro =Retrofit.Builder()
-            .baseUrl("https://randomuser.me/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        return retro
-    }
-    private fun searchByName(query : String){
-        CoroutineScope(Dispatchers.IO).launch {
-                val call = getRetrofit().create(APIService::class.java).getUsers("?results=50$query")
-                val body = call.body()
-                activity?.runOnUiThread {
-                    if (call.isSuccessful){
-                       val users = body?.results ?: emptyList()
-                        usuarios.clear()
-                       usuarios.addAll(users)
-                        adapter= AdapterUsuario(usuarios)
-                        binding.rvUsers.adapter= adapter
-                        adapter.notifyDataSetChanged()
-                        binding.rvUsers.smoothScrollToPosition(0)
-                    }
-                }
+}
 
-            }
-
-        }
-    }
