@@ -12,5 +12,8 @@ class ViewHolderUsuarios (view: View) : RecyclerView.ViewHolder(view) {
         binding.tvEmail.text = result.email
         binding.tvGenero.text = result.gender
         binding.tvNombre.text = "${result.name.title} ${result.name.first} ${result.name.last}"
+        binding.cardUsuario.setOnClickListener {
+
+        }
     }
 }

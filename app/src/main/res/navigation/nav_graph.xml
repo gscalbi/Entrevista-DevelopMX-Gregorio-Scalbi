@@ -13,6 +13,7 @@
         <action
             android:id="@+id/action_fragmentUsuarios_to_fragmentTwo"
             app:destination="@id/fragmentTwo" />
+
     </fragment>
     <fragment
         android:id="@+id/fragmentTwo"
