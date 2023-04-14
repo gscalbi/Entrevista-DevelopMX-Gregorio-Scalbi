@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.size
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.fatal.entrevistadevelopmx.R
 import com.fatal.entrevistadevelopmx.data.APIService
 import com.fatal.entrevistadevelopmx.data.Result
 import com.fatal.entrevistadevelopmx.databinding.FragmentUsuariosBinding
@@ -37,14 +40,20 @@ class FragmentUsuarios : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //inicializa el RecycleView
-        recyclerLoad()
-        //configura viewModel
-        ViewModelSet()
-        //setea los listeners de los botones
-        setBotones()
+        try{
+            //configura viewModel
+            ViewModelSet()
+            //inicializa el RecycleView
+            recyclerLoad()
+            //setea los listeners de los botones
+            setBotones()
+        }catch (e:Exception){
+            Toast.makeText(view.context,e.message,Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun setBotones() {
@@ -60,7 +69,7 @@ class FragmentUsuarios : Fragment() {
     }
 
     private fun ViewModelSet() {
-        viewModel.usuarios.observe(viewLifecycleOwner) {
+            viewModel.usuarios.observe(viewLifecycleOwner) {
             adapter = AdapterUsuario(it)
             binding.rvUsers.adapter = adapter
             adapter.notifyDataSetChanged()

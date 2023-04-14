@@ -12,16 +12,21 @@
         tools:layout="@layout/fragment_usuarios">
         <action
             android:id="@+id/action_fragmentUsuarios_to_fragmentTwo"
-            app:destination="@id/fragmentTwo" />
+            app:destination="@id/fragmentDetalleUsuario"
+
+            />
 
     </fragment>
     <fragment
-        android:id="@+id/fragmentTwo"
+        android:id="@+id/fragmentDetalleUsuario"
         android:name="com.fatal.entrevistadevelopmx.framework.fragments.FragmentDetalleUsuario"
         android:label="Detalle"
         tools:layout="@layout/fragment_detalle_usuario" >
         <argument
             android:name="telefono"
+            app:argType="string" />
+        <argument
+            android:name="gender"
             app:argType="string" />
         <argument
             android:name="direccion"

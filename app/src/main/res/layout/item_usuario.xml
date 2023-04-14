@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/cardUsuario"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -8,17 +8,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginHorizontal="@dimen/common_padding_default"
     android:layout_marginTop="@dimen/common_padding_default"
-    app:cardCornerRadius="@dimen/common_padding_default"
-    android:backgroundTint="@color/teal_700"
+    android:paddingBottom="@dimen/common_padding_middle"
+    android:background="@drawable/card_usuario"
     >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/gradient_card"
-
-
-        >
         <TextView
             android:id="@+id/tvNombre"
             android:layout_width="0dp"
@@ -33,39 +26,37 @@
             android:layout_marginVertical="@dimen/common_padding_min"
             android:layout_marginHorizontal="@dimen/common_padding_default"
             />
-        <View
-            app:layout_constraintTop_toBottomOf="@id/tvNombre"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginHorizontal="2dp"
-            android:background="@color/white"/>
+    <View
+        android:id="@+id/viewSeparador"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        app:layout_constraintTop_toBottomOf="@id/tvNombre"
+        android:background="@color/black"/>
+
         <TextView
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvNombre"
+            app:layout_constraintTop_toBottomOf="@id/viewSeparador"
             app:layout_constraintStart_toStartOf="@id/tvNombre"
             tools:text="gregorioscalbi@gmail.com"
-            android:layout_marginVertical="12dp"
-            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:textSize="18sp"
             android:textColor="@color/black"
             />
         <TextView
             android:id="@+id/tvGenero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvNombre"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmail"
+            app:layout_constraintStart_toStartOf="@id/tvEmail"
 
             tools:text="male"
-            android:fontFamily="@font/mori_regular"
-            android:textSize="16sp"
+            android:fontFamily="@font/mori_semi_bold"
+            android:textSize="20sp"
             android:textColor="@color/black"
-            android:layout_marginVertical="12dp"
+            android:layout_marginBottom="12dp"
 
-            android:layout_margin="@dimen/common_padding_middle"
             />
 
 
@@ -73,4 +64,3 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</com.google.android.material.card.MaterialCardView>
